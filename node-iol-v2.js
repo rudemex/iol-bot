@@ -11,8 +11,7 @@ const getAccountStatus = token => {
     return axios.get(`${apiUrl}/estadocuenta`, 
     {
         headers: { Authorization: `Bearer ${token.access_token}` }
-    })
-    .then(res => res.data)
+    }).then( res => res.data)
 }
 
 const getPortfolio = token => {
