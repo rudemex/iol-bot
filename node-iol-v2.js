@@ -7,6 +7,7 @@ const credentials = require ('./auth.json');
 let apiPath = 'https://api.invertironline.com';
 let apiUrl = `${apiPath}/api/v2`;
 
+// Mi Cuenta
 const getAccountStatus = token => {
     return axios.get(`${apiUrl}/estadocuenta`, 
     {
@@ -43,6 +44,7 @@ const cancelOperation = (token, number) => {
     .then(res => res.data)
 }
 
+// Operar
 const buy = (token, market, asset, quantity, price, term, validTill) => {
     return axios.post(`${apiUrl}/operaciones/api/operar/Comprar`, 
     {
@@ -73,6 +75,7 @@ const sell = (token, market, asset, quantity, price, validTill)=> {
     .then(res => res.data)
 }
 
+// Titulos
 const getTicker = (token, market, asset) => {
     return axios.get(`${apiUrl}/${market}/Titulos/${asset}`, {
         headers: { Authorization: `Bearer ${token.access_token}` }

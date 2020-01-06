@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "axios": "^0.18.1"
+    "axios": "^0.18.1",
+    "currency.js": "^1.2.2",
+    "easy-table": "^1.1.1"
   },
   "keywords": [
     "invertironline",
@@ -15,7 +17,5 @@
     "iol",
     "investment"
   ],
-  "homepage": "https://github.com/paoliniluis/node-iol",
-  "author": "Luis Paolini (paoliniluis@gmail.com)",
   "license": "MIT"
 }
