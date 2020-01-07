@@ -1,5 +1,11 @@
 const iol = require('./node-iol-v2');
+const signale  =  require('signale');
+const moment = require('moment-timezone');
 const utils = require('./utils.js');
+
+let mydate = moment('2020-01-07T03:01:16.9960595-03:00').tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DD hh:mm:ss');
+
+signale.info(`DATE: ${mydate}`);
 
 /*
 * ================================================
@@ -11,12 +17,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getAccountStatus(token)
     ]).then( data => {
-        console.log("[i] Estado de la cuenta: ", data[0]);
+        signale.success("[i] Estado de la cuenta: ", data[0]);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -28,12 +34,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getPortfolio(token)
     ]).then( data => {
-        console.log("[i] Portfolio: ", data);
+        signale.success("[i] Portfolio: ", data);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -45,12 +51,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getOperations(token)
     ]).then( data => {
-        console.log("[i] Operaciones: ", data);
+        signale.success("[i] Operaciones: ", data);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -62,12 +68,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getOperation(token, '20674919')
     ]).then( data => {
-        console.log("[i] Operacion 20674919: ", data);
+        signale.success("[i] Operacion 20674919: ", data);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -79,12 +85,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getOperation(token, '20674919')
     ]).then( data => {
-        console.log("[i] Operacion 20674919: ", data);
+        signale.success("[i] Operacion 20674919: ", data);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -96,12 +102,12 @@ iol.auth().then( token => {
     return Promise.all([
         iol.getTicker(token, 'bcba', 'ay24'),
     ]).then( data => {
-        console.log("[i] Data: ", data);
+        signale.success("[i] Data: ", data);
     }).catch( e => {
-        console.log(e);
+        signale.error(e);
     });
 }).catch( e => {
-    console.log(e);
+    signale.error(e);
 });*/
 
 /*
@@ -109,7 +115,7 @@ iol.auth().then( token => {
 * Cotizacion bono
 * ================================================
 */
-iol.auth().then(token => {
+/*iol.auth().then(token => {
     return Promise.all([
         iol.getTickerValueTest(token, 'bcba', 'ay24'),
         iol.getTickerValueTest(token, 'bcba', 'ay24d')
@@ -119,17 +125,21 @@ iol.auth().then(token => {
         let ccl = ay24.ultimoPrecio/ay24d.ultimoPrecio;
         let myCcl = 3000 / ay24d.ultimoPrecio;
 
-        console.log(`AY24 price: ${ utils.ARS(ay24.ultimoPrecio) }`);
-        console.log(`AY24D price: ${ utils.USD(ay24d.ultimoPrecio) }`);
-        console.log(`La compra de dólares MEP cuesta: ${ utils.ARS(ccl) }` );
-        console.log(`* ================================================ *` );
-        console.log(`Mi MEP: ${ utils.ARS(myCcl) }\n` );
+        //signale.success(values);
 
-        console.log(`CAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable(ay24.puntas));
-        console.log(`CAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable(ay24d.puntas));
+        signale.info(`AY24: ${ utils.ARS(ay24.ultimoPrecio) }`);
+        signale.info(`AY24D: ${ utils.USD(ay24d.ultimoPrecio) }`);
+        signale.info(`La compra de dólares MEP cuesta: ${ utils.ARS(ccl) }` );
+        signale.info(`* ================================================ *` );
+        signale.info(`Mi MEP: ${ utils.ARS(myCcl) }\n` );
+
+        if(ay24.puntas.length > 0 && ay24d.puntas.length > 0) {
+            signale.info(`CAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable(ay24.puntas));
+            signale.info(`CAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable(ay24d.puntas));
+        }
 
 
     })
 }).catch( e => {
-    console.log(e);
-});
+    signale.error(e);
+});*/
