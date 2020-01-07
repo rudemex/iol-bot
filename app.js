@@ -1,11 +1,8 @@
 const iol = require('./node-iol-v2');
 const signale  =  require('signale');
-const moment = require('moment-timezone');
 const utils = require('./utils.js');
 
-let mydate = moment('2020-01-07T03:01:16.9960595-03:00').tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DD hh:mm:ss');
-
-signale.info(`DATE: ${mydate}`);
+signale.info(`DATE: ${ utils.formatDate('2020-01-07T03:01:16.9960595-03:00') }`);
 
 /*
 * ================================================
@@ -115,7 +112,7 @@ iol.auth().then( token => {
 * Cotizacion bono
 * ================================================
 */
-iol.auth().then(token => {
+/*iol.auth().then(token => {
     return Promise.all([
         iol.getTickerValueTest(token, 'bcba', 'ay24'),
         iol.getTickerValueTest(token, 'bcba', 'ay24d')
@@ -127,19 +124,19 @@ iol.auth().then(token => {
 
         //signale.success(values);
 
-        signale.info(`AY24: ${ utils.ARS(ay24.ultimoPrecio) }`);
-        signale.info(`AY24D: ${ utils.USD(ay24d.ultimoPrecio) }`);
-        signale.info(`La compra de dólar bolsa cuesta: ${ utils.ARS(ccl) }` );
-        signale.info(`* ================================================ *` );
-        //signale.info(`Mi MEP: ${ utils.ARS(myCcl) }\n` );
+        signale.info(`AY24: ${ utils.ars(ay24.ultimoPrecio) }`);
+        signale.info(`AY24D: ${ utils.usd(ay24d.ultimoPrecio) }`);
+
+        signale.info(`La compra de dólar bolsa cuesta: ${ utils.ars(ccl) }` );
+        signale.info(`* ================================================ *\n` );
+        //signale.info(`Mi MEP: ${ utils.ars(myCcl) }\n` );
 
         if(ay24.puntas.length > 0 && ay24d.puntas.length > 0) {
-            signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable(ay24.puntas));
-            signale.success(`\nCAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable(ay24d.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable('$', ay24.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable('U$D', ay24d.puntas));
         }
-
 
     })
 }).catch( e => {
     signale.error(e);
-});
+});*/

@@ -101,7 +101,7 @@ const getTickerValueTest = (token, market, asset) => {
     return axios.get(`${apiUrl}/${market}/Titulos/${asset}/Cotizacion`,{
         headers: { Authorization: `Bearer ${token.access_token}` },
         data: {
-            'model.plazo': 't0'
+            'model.plazo': 't2'
         }
     })
         .then(res => res.data)
