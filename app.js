@@ -115,7 +115,7 @@ iol.auth().then( token => {
 * Cotizacion bono
 * ================================================
 */
-/*iol.auth().then(token => {
+iol.auth().then(token => {
     return Promise.all([
         iol.getTickerValueTest(token, 'bcba', 'ay24'),
         iol.getTickerValueTest(token, 'bcba', 'ay24d')
@@ -129,17 +129,17 @@ iol.auth().then( token => {
 
         signale.info(`AY24: ${ utils.ARS(ay24.ultimoPrecio) }`);
         signale.info(`AY24D: ${ utils.USD(ay24d.ultimoPrecio) }`);
-        signale.info(`La compra de dólares MEP cuesta: ${ utils.ARS(ccl) }` );
+        signale.info(`La compra de dólar bolsa cuesta: ${ utils.ARS(ccl) }` );
         signale.info(`* ================================================ *` );
-        signale.info(`Mi MEP: ${ utils.ARS(myCcl) }\n` );
+        //signale.info(`Mi MEP: ${ utils.ARS(myCcl) }\n` );
 
         if(ay24.puntas.length > 0 && ay24d.puntas.length > 0) {
-            signale.info(`CAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable(ay24.puntas));
-            signale.info(`CAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable(ay24d.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable(ay24.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable(ay24d.puntas));
         }
 
 
     })
 }).catch( e => {
     signale.error(e);
-});*/
+});
