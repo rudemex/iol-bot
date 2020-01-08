@@ -11,17 +11,17 @@ const amount = (symbol = null, value) => currency(value, { symbol: `${ (symbol) 
 // Format num
 const num = (symbol = null, value) => currency(value, { symbol: `${ (symbol) ? `${symbol} ` :'' }`, precision: 0, formatWithSymbol: true, decimal: ',', separator: '.'}).format(true);
 // Format date
-const formatDate = (date, formatDate = 'YYYY-MM-DD hh:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
+const formatDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
 // Format date UTC 2013-11-18T11:55Z
-const formatDateUTC = (date, timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).utc().format();
+const formatDateUTC = (date, formatDate = 'YYYY-MM-DDTHH:mm:ss.SSS', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).utc().format(formatDate);
 
 const currentDay = () => {
-    let now = moment().tz('America/Argentina/Buenos_Aires');
+    let now = moment();
 
     let cDay = {
-        "now": now.toString(),
-        "start": now.startOf('day').toString(),
-        "end": now.endOf('day').toString(),
+        "now": formatDate(now, 'YYYY-MM-DDTHH:mm:ss.SSS'),
+        "start": formatDate(now.startOf('day'), 'YYYY-MM-DDTHH:mm:ss.SSS'),
+        "end": formatDate(now.endOf('day'), 'YYYY-MM-DDTHH:mm:ss.SSS'),
     }
 
     return cDay;
