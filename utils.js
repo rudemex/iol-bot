@@ -14,30 +14,31 @@ const num = (symbol = null, value) => currency(value, { symbol: `${ (symbol) ? `
 const formatDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
 // Format date UTC 2013-11-18T11:55Z
 const formatDateUTC = (date, formatDate = 'YYYY-MM-DDTHH:mm:ss.SSSZ', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
+
 // Get current date with formats
 const currentDay = () => {
-    let now = moment();
+    const now = moment();
 
     let datesObj = {
         "date":{
-            "now": formatDate(now),
-            "start": formatDate(now.startOf('day')),
-            "end": formatDate(now.endOf('day')),
+            "now": `${ formatDate(moment(now)) }`,
+            "start": `${ formatDate(moment(now).startOf('day')) }`,
+            "end": `${ formatDate(moment(now).endOf('day')) }`,
         },
         "extended": {
-            "now": formatDate(now, 'YYYY-MM-DD HH:mm:ss.SSS'),
-            "start": formatDate(now.startOf('day'), 'YYYY-MM-DD HH:mm:ss.SSS'),
-            "end": formatDate(now.endOf('day'), 'YYYY-MM-DD HH:mm:ss.SSS'),
+            "now": `${ formatDate(moment(now), 'YYYY-MM-DD HH:mm:ss.SSS') }`,
+            "start": `${ formatDate(moment(now).startOf('day'), 'YYYY-MM-DD HH:mm:ss.SSS') }`,
+            "end": `${ formatDate(moment(now).endOf('day'), 'YYYY-MM-DD HH:mm:ss.SSS') }`,
         },
         "iso":{
-            "now": `${ now.toISOString() }`,
-            "start": `${ now.startOf('day').toISOString()} `,
-            "end": `${ now.endOf('day').toISOString() }`,
+            "now": `${formatDateUTC(moment(now), 'YYYY-MM-DDTHH:mm:ss.SSS') }Z`,
+            "start": `${ formatDateUTC(moment(now).startOf('day'), 'YYYY-MM-DDTHH:mm:ss.SSS') }Z`,
+            "end": `${ formatDateUTC(moment(now).endOf('day'), 'YYYY-MM-DDTHH:mm:ss.SSS') }Z`,
         },
         "utc":{
-            "now": `${ formatDateUTC(now) }`,
-            "start": `${ formatDateUTC(now.startOf('day')) }`,
-            "end": `${ formatDateUTC(now.endOf('day')) }`,
+            "now": `${ formatDateUTC(moment(now)) }`,
+            "start": `${ formatDateUTC(moment(now).startOf('day')) }`,
+            "end": `${ formatDateUTC(moment(now).endOf('day')) }`,
         }
     };
 
