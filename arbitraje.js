@@ -1,10 +1,24 @@
 const iol = require('./node-iol');
 const signale  =  require('signale');
 const utils = require('./utils.js');
+const request = require("request");
 
 //console.log( utils.currentDay() );
 
-iol.auth().then(token => {
+let urlAY24 = "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1";
+let urlAY24D = "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1";
+
+request({
+    url: urlAY24,
+    json: true
+}, function (error, response, body) {
+
+    if (!error && response.statusCode === 200) {
+        console.log(body) // Print the json response
+    }
+})
+
+/*iol.auth().then(token => {
     return Promise.all([
     iol.getTickerValue(token, 'bcba', 'ay24'),
     iol.getTickerValue(token, 'bcba', 'ay24d'),
@@ -33,4 +47,4 @@ iol.auth().then(token => {
             //return iol.buy(token, 'bcba', 'TS', 1, ao20Price, 't0', endOfToday)
         }
     })
-}).catch(signale.error)
+}).catch(signale.error)*/

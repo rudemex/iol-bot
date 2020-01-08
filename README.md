@@ -72,3 +72,6 @@ iol.auth()
 - Review The getTickerValuesBetweenDates function, haven't tried it, specially dates formats
 - Check the refresh token function, it's not behaving as it should
 - Polish the username/password authentication (hey! this was done in just one day!)
+
+https://react-charts.js.org/examples/line
+https://github.com/tannerlinsley/react-charts
