@@ -12,6 +12,21 @@ const amount = (symbol = null, value) => currency(value, { symbol: `${ (symbol) 
 const num = (symbol = null, value) => currency(value, { symbol: `${ (symbol) ? `${symbol} ` :'' }`, precision: 0, formatWithSymbol: true, decimal: ',', separator: '.'}).format(true);
 // Format date
 const formatDate = (date, formatDate = 'YYYY-MM-DD hh:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
+// Format date UTC 2013-11-18T11:55Z
+const formatDateUTC = (date, timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).utc().format();
+
+const currentDay = () => {
+    let now = moment().tz('America/Argentina/Buenos_Aires');
+
+    let cDay = {
+        "now": now.toString(),
+        "start": now.startOf('day').toString(),
+        "end": now.endOf('day').toString(),
+    }
+
+    return cDay;
+}
+
 // Format json to table log
 const cTable = (symbol = null, data) => {
     let tablaDePuntas = new Table;
@@ -32,6 +47,8 @@ module.exports = {
     usd,
     amount,
     num,
+    currentDay,
     formatDate,
+    formatDateUTC,
     cTable
 };
