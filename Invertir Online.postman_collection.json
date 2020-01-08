@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "ef6c936c-eb24-413f-945e-be92811803cc",
+		"name": "Invertir Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa1009af-bc06-405a-a5f5-e5312181eddf",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
+							"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "bGEo5UpCTmKMHOob9jUKn6S0dmq5nfyNvo9EHfu0FJh2cm7FjqUsN9xQVnp7zU_3BMOi2HEgA_X5O_-Cb2Dpl30W5q5e6HLv30TFHdmSXyd9rqQTx1gz_IbXGbHBmjrEV3BxIagK6A7t6JegDR8oVyIaC9pmz4aQ5UP74QRiOF7WpNk0tu2HW2JNF8eXvoz4RtsvfEh9BfjqCIVxhszOl9mqIMsqz8pibAkGU8DCuOW7iw8srmZ6hTYJKYefF3OR-qwNxfWWAQkaJi90H_6dTSFBT0jG-01VWvej_br06nrqQJ7yGUg4b4Zle5XRNKWnJHyZdFjHicOwf7jZhJRMIg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "mex.skarlatina@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "2Wsdfgt543@",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"token"
+					]
+				},
+				"description": "El método de autenticación que se utiliza en esta plataforma son tokens digitales. Los tokens son simples strings que se envían al servidor. Existen dos tipos de tokens: bearer token y refresh tokens. El bearer token se debe presentar en cada request para poder acceder al recurso solicitado. Este token es válido por 15 minutos desde que se lo solicita. Para renovar este token, se utiliza el refresh token. Para obtener el primer par de tokens se realiza un request POST especificando el nombre de usuario y contraseña."
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a5b369d-b31d-4c51-a654-4b42dfe56560",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
+							"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "refresh_token",
+							"value": "{{iol_refresh_token}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cotizacion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer {{iol_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "model.plazo",
+							"value": "t0",
+							"type": "text"
+						},
+						{
+							"key": "mercado",
+							"value": "bcba",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "simbolo",
+							"value": "ay24d",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "model.simbolo",
+							"value": "ay24d",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "model.mercado",
+							"value": "bCBA",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/api/v2/bcba/Titulos/ay24/Cotizacion",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"bcba",
+						"Titulos",
+						"ay24",
+						"Cotizacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Ticker",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer {{iol_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/api/v2/bcba/Titulos/ay24",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"bcba",
+						"Titulos",
+						"ay24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cotizacion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer {{iol_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/api/v2/{Mercado}/Titulos/{Simbolo}/Cotizacion?mercado=bcba&simbolo=ay24d&model.simbolo=ay24d&model.mercado=bCBA&model.plazo=t2",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"{Mercado}",
+						"Titulos",
+						"{Simbolo}",
+						"Cotizacion"
+					],
+					"query": [
+						{
+							"key": "mercado",
+							"value": "bcba"
+						},
+						{
+							"key": "simbolo",
+							"value": "ay24d"
+						},
+						{
+							"key": "model.simbolo",
+							"value": "ay24d"
+						},
+						{
+							"key": "model.mercado",
+							"value": "bCBA"
+						},
+						{
+							"key": "model.plazo",
+							"value": "t2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operacion NRO",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": " Bearer {{iol_access_token}}"
+					}
+				],
+				"url": {
+					"raw": "https://api.invertironline.com/api/v2/operaciones/20754820",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"operaciones",
+						"20754820"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operaciones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer {{iol_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "numero",
+							"value": "20754820",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.invertironline.com/api/v2/operaciones/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"invertironline",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"operaciones",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
