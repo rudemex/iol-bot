@@ -4,14 +4,8 @@ const utils = require('./utils.js');
 
 //2020-01-08T02:59:59.999Z
 console.log( utils.currentDay() );
-console.log('DATE NOW: ', utils.formatDate( utils.currentDay().now ) );
-console.log('DATE START:',  utils.formatDate( utils.currentDay().start ) );
-console.log('DATE END: ',  utils.formatDate( utils.currentDay().end ) );
-console.log('UTC: ', utils.formatDateUTC( utils.currentDay().now ) );
-console.log('UTC: ',  utils.formatDateUTC( utils.currentDay().start ) );
-console.log('UTC: ',  utils.formatDateUTC( utils.currentDay().end ) );
 
-iol.auth().then(token => {
+/*iol.auth().then(token => {
     return Promise.all([
     iol.getTickerValue(token, 'bcba', 'ay24'),
     iol.getTickerValue(token, 'bcba', 'ay24d'),
@@ -39,4 +33,4 @@ iol.auth().then(token => {
             //return iol.buy(token, 'bcba', 'TS', 1, tsPriceInArg, 't0', endOfToday)
         }
     })
-}).catch(signale.error)
+}).catch(signale.error)*/
