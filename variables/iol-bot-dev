@@ -7,9 +7,11 @@ CORS_ENABLED=true
 SERVICE_API_IOL=https://api.invertironline.com
 SERVICE_SERVER_TIME=https://www.invertironline.com/api/cotizaciones/server_time
 SERVICE_HISTORY_CHART=https://www.invertironline.com/api/cotizaciones/history
-SERVICE_INTRADIARY_CHART_AY24=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1
-SERVICE_INTRADIARY_CHART_AY24D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1
-SERVICE_INTRADIARY_CHART_AO20=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1
-SERVICE_INTRADIARY_CHART_AO20D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1
+#SERVICE_HISTORY_CHART_AY24=https://www.invertironline.com/api/cotizaciones/history?symbolName=AY24&exchange=BCBA&from=1577706851&to=1578570851&resolution=D
+SERVICE_INTRADIARY_CHART=https://www.invertironline.com/Titulo/GraficoIntradiario
+#SERVICE_INTRADIARY_CHART_AY24=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1
+#SERVICE_INTRADIARY_CHART_AY24D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1
+#SERVICE_INTRADIARY_CHART_AO20=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1
+#SERVICE_INTRADIARY_CHART_AO20D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1
 SERVICE_API_TELEGRAM=https://api.telegram.org
 TOKEN_TELEGRAM_BOT=1069898694:AAEyBMMtLB77EYn-nCg8gHx5JbyKVCSxiwQ

@@ -1,10 +1,14 @@
+const config = require('config');
 const axios = require('axios');
+const signale  =  require('signale');
 const querystring = require('querystring');
 
 const fsp = require ('./utils/fs-promise');
 const credentials = require ('./auth.json');
 
-let apiPath = 'https://api.invertironline.com';
+const servicesConfig = config.get('services');
+
+let apiPath = `${servicesConfig.api_iol}`;
 let apiUrl = `${apiPath}/api/v2`;
 
 // Mi Cuenta
@@ -135,6 +139,28 @@ const getPanelsByInstrumentAndCountry = (token, country, asset) => {
     .then(res => res.data)
 }
 
+const getChartsIntradiary = (idTitulo,idTipo,idMercado) => {
+    return axios.get(`${servicesConfig.charts.intradiary}`,{
+        params: {
+            idTitulo: idTitulo,
+            idTipo: idTipo,
+            idMercado: idMercado
+        }
+    }).then( res => res.data)
+}
+
+const getChartsHistory = (symbolName, exchange, fromDate, toDate, resolution) => {
+    return axios.get(`${servicesConfig.charts.history}`,{
+        params: {
+            symbolName: symbolName,
+            exchange: exchange,
+            from: fromDate,
+            to: toDate,
+            resolution: resolution
+        }
+    }).then( res => res.data)
+}
+
 const readToken = () => {
     return new Promise ((resolve, reject) => {
         fsp.read('token.json')
@@ -197,5 +223,7 @@ module.exports = {
     getTickerValuesBetweenDates,
     getInstrumentsByCountry,
     getPanelsByInstrumentAndCountry,
+    getChartsIntradiary,
+    getChartsHistory,
     auth
 }

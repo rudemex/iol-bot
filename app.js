@@ -109,6 +109,35 @@ iol.auth().then( token => {
 
 /*
 * ================================================
+* Chart intradiary
+*
+* AY24: https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1
+* AY24D: https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1
+* AO20: https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1
+* AO20D: https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1
+* ================================================
+*/
+/*iol.getChartsIntradiary(79217,3,1).then( (data) => {
+    signale.info(`DATA:`, data);
+}).catch( e => {
+    signale.error(e);
+});*/
+
+/*
+* ================================================
+* Chart history
+*
+* https://www.invertironline.com/api/cotizaciones/history?symbolName=AY24&exchange=BCBA&from=1577706851&to=1578570851&resolution=D
+* ================================================
+*/
+/*iol.getChartsHistory('AY24', 'BCBA',1577706851, 1578570851, 'D').then( (data) => {
+    signale.info(`DATA:`, data);
+}).catch( e => {
+    signale.error(e);
+});*/
+
+/*
+* ================================================
 * Cotizacion bono
 * ================================================
 */
@@ -140,3 +169,4 @@ iol.auth().then(token => {
 }).catch( e => {
     signale.error(e);
 });
+

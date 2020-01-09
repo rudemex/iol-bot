@@ -16,12 +16,7 @@
     "server_time": "SERVICE_SERVER_TIME",
     "charts": {
       "history": "SERVICE_HISTORY_CHART",
-      "intradiary": {
-        "AY24": "SERVICE_INTRADIARY_CHART_AY24",
-        "AY24D": "SERVICE_INTRADIARY_CHART_AY24D",
-        "AO20": "SERVICE_INTRADIARY_CHART_AO20",
-        "AO20D": "SERVICE_INTRADIARY_CHART_AO20D"
-      }
+      "intradiary": "SERVICE_INTRADIARY_CHART"
     }
   }
 }
