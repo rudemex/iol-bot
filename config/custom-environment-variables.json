@@ -1,0 +1,9 @@
+{
+  "server": {
+    "port": "SERVER_PORT",
+    "origins":"ORIGINS_ALLOWED",
+    "originsReadOnly":"ORIGINS_READ_ONLY",
+    "corsEnabled": "CORS_ENABLED",
+    "tz": "TZ"
+  }
+}

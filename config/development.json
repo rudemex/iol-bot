@@ -1,0 +1,9 @@
+{
+  "server": {
+    "port": 8008,
+    "origins": "http://localhost:3000,http://localhost:8008",
+    "originsReadOnly":"http://localhost:8008",
+    "corsEnabled": true,
+    "tz": "America/Argentina/Buenos_Aires"
+  }
+}
