@@ -1,9 +1,16 @@
 {
   "server": {
     "port": 8008,
-    "origins": "http://localhost:3000,http://localhost:8008",
+    "origins": "http://localhost:8008",
     "originsReadOnly":"http://localhost:8008",
     "corsEnabled": true,
     "tz": "America/Argentina/Buenos_Aires"
+  },
+  "services": {
+    "serverTime": "https://www.invertironline.com/api/cotizaciones/server_time",
+    "intradiaryChartAY24": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1",
+    "intradiaryChartAY24D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1",
+    "intradiaryChartAO20": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1",
+    "intradiaryChartAO20D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1"
   }
 }

@@ -5,5 +5,12 @@
     "originsReadOnly":"ORIGINS_READ_ONLY",
     "corsEnabled": "CORS_ENABLED",
     "tz": "TZ"
+  },
+  "services": {
+    "serverTime": "SERVICE_SERVER_TIME",
+    "intradiaryChartAY24": "SERVICE_INTRADIARY_CHART_AY24",
+    "intradiaryChartAY24D": "SERVICE_INTRADIARY_CHART_AY24D",
+    "intradiaryChartAO20": "SERVICE_INTRADIARY_CHART_AO20",
+    "intradiaryChartAO20D": "SERVICE_INTRADIARY_CHART_AO20D"
   }
 }

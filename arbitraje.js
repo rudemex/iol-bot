@@ -1,4 +1,4 @@
-const iol = require('./node-iol');
+const iol = require('./node-iol-v2');
 const signale  =  require('signale');
 const utils = require('./utils.js');
 const request = require("request");
@@ -7,14 +7,16 @@ const request = require("request");
 
 let urlAY24 = "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1";
 let urlAY24D = "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1";
+let serverTime = "https://www.invertironline.com/api/cotizaciones/server_time";
 
 request({
-    url: urlAY24,
+    url: serverTime,
     json: true
 }, function (error, response, body) {
 
     if (!error && response.statusCode === 200) {
-        console.log(body) // Print the json response
+        //console.log(body) // Print the json response
+        console.log(utils.formatTimestampToDate(body)) // Print the json response
     }
 })
 
