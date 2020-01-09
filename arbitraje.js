@@ -10,7 +10,7 @@ let urlAY24D = "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitul
 let serverTime = "https://www.invertironline.com/api/cotizaciones/server_time";
 
 request({
-    url: serverTime,
+    url: urlAY24,
     json: true
 }, function (error, response, body) {
 

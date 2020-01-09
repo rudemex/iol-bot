@@ -7,10 +7,16 @@
     "tz": "TZ"
   },
   "services": {
-    "serverTime": "SERVICE_SERVER_TIME",
-    "intradiaryChartAY24": "SERVICE_INTRADIARY_CHART_AY24",
-    "intradiaryChartAY24D": "SERVICE_INTRADIARY_CHART_AY24D",
-    "intradiaryChartAO20": "SERVICE_INTRADIARY_CHART_AO20",
-    "intradiaryChartAO20D": "SERVICE_INTRADIARY_CHART_AO20D"
+    "api_iol":"SERVICE_API_IOL",
+    "server_time",: "SERVICE_SERVER_TIME",
+    "charts": {
+      "history": "SERVICE_HISTORY_CHART",
+      "intradiary": {
+        "AY24": "SERVICE_INTRADIARY_CHART_AY24",
+        "AY24D": "SERVICE_INTRADIARY_CHART_AY24D",
+        "AO20": "SERVICE_INTRADIARY_CHART_AO20",
+        "AO20D": "SERVICE_INTRADIARY_CHART_AO20D",
+      }
+    }
   }
 }

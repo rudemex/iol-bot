@@ -7,10 +7,16 @@
     "tz": "America/Argentina/Buenos_Aires"
   },
   "services": {
-    "serverTime": "https://www.invertironline.com/api/cotizaciones/server_time",
-    "intradiaryChartAY24": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1",
-    "intradiaryChartAY24D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1",
-    "intradiaryChartAO20": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1",
-    "intradiaryChartAO20D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1"
+    "api_iol": "https://api.invertironline.com",
+    "server_time": "https://www.invertironline.com/api/cotizaciones/server_time",
+    "charts": {
+      "history": "https://www.invertironline.com/api/cotizaciones/history",
+      "intradiary": {
+        "AY24": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1",
+        "AY24D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1",
+        "AO20": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1",
+        "AO20D": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1"
+      }
+    }
   }
 }

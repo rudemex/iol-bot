@@ -3,7 +3,9 @@ ORIGINS_ALLOWED=http://localhost:3000,http://localhost:8008
 ORIGINS_READ_ONLY=
 TZ=America/Argentina/Buenos_Aires
 CORS_ENABLED=true
+SERVICE_API_IOL=https://api.invertironline.com
 SERVICE_SERVER_TIME=https://www.invertironline.com/api/cotizaciones/server_time
+SERVICE_HISTORY_CHART=https://www.invertironline.com/api/cotizaciones/history
 SERVICE_INTRADIARY_CHART_AY24=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1
 SERVICE_INTRADIARY_CHART_AY24D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1
 SERVICE_INTRADIARY_CHART_AO20=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1
