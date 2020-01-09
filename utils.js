@@ -16,6 +16,8 @@ const formatDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'Americ
 const formatDateUTC = (date, formatDate = 'YYYY-MM-DDTHH:mm:ss.SSSZ', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
 // Format timestamp(unix) to date
 const formatTimestampToDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment.unix(date).tz(timeZone).format(formatDate);
+// Format date to timestamp(unix)
+const formatDateToTimestamp = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date, formatDate).tz(timeZone).unix();
 
 // Get current date with formats
 const currentDay = () => {
@@ -70,6 +72,7 @@ module.exports = {
     currentDay,
     formatDate,
     formatTimestampToDate,
+    formatDateToTimestamp,
     formatDateUTC,
     cTable
 };
