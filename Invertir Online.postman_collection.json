@@ -6,135 +6,228 @@
 	},
 	"item": [
 		{
-			"name": "Get TOKEN",
-			"event": [
+			"name": "Auth",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "fa1009af-bc06-405a-a5f5-e5312181eddf",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
-							"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
+					"name": "Get TOKEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa1009af-bc06-405a-a5f5-e5312181eddf",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
+									"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "bGEo5UpCTmKMHOob9jUKn6S0dmq5nfyNvo9EHfu0FJh2cm7FjqUsN9xQVnp7zU_3BMOi2HEgA_X5O_-Cb2Dpl30W5q5e6HLv30TFHdmSXyd9rqQTx1gz_IbXGbHBmjrEV3BxIagK6A7t6JegDR8oVyIaC9pmz4aQ5UP74QRiOF7WpNk0tu2HW2JNF8eXvoz4RtsvfEh9BfjqCIVxhszOl9mqIMsqz8pibAkGU8DCuOW7iw8srmZ6hTYJKYefF3OR-qwNxfWWAQkaJi90H_6dTSFBT0jG-01VWvej_br06nrqQJ7yGUg4b4Zle5XRNKWnJHyZdFjHicOwf7jZhJRMIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript"
-					}
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "mex.skarlatina@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "2Wsdfgt543@",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.invertironline.com/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"invertironline",
+								"com"
+							],
+							"path": [
+								"token"
+							]
+						},
+						"description": "El método de autenticación que se utiliza en esta plataforma son tokens digitales. Los tokens son simples strings que se envían al servidor. Existen dos tipos de tokens: bearer token y refresh tokens. El bearer token se debe presentar en cada request para poder acceder al recurso solicitado. Este token es válido por 15 minutos desde que se lo solicita. Para renovar este token, se utiliza el refresh token. Para obtener el primer par de tokens se realiza un request POST especificando el nombre de usuario y contraseña."
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh TOKEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a5b369d-b31d-4c51-a654-4b42dfe56560",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
+									"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "refresh_token",
+									"value": "{{iol_refresh_token}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.invertironline.com/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"invertironline",
+								"com"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "bGEo5UpCTmKMHOob9jUKn6S0dmq5nfyNvo9EHfu0FJh2cm7FjqUsN9xQVnp7zU_3BMOi2HEgA_X5O_-Cb2Dpl30W5q5e6HLv30TFHdmSXyd9rqQTx1gz_IbXGbHBmjrEV3BxIagK6A7t6JegDR8oVyIaC9pmz4aQ5UP74QRiOF7WpNk0tu2HW2JNF8eXvoz4RtsvfEh9BfjqCIVxhszOl9mqIMsqz8pibAkGU8DCuOW7iw8srmZ6hTYJKYefF3OR-qwNxfWWAQkaJi90H_6dTSFBT0jG-01VWvej_br06nrqQJ7yGUg4b4Zle5XRNKWnJHyZdFjHicOwf7jZhJRMIg",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "mex.skarlatina@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "2Wsdfgt543@",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "password",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://api.invertironline.com/token",
-					"protocol": "https",
-					"host": [
-						"api",
-						"invertironline",
-						"com"
-					],
-					"path": [
-						"token"
-					]
-				},
-				"description": "El método de autenticación que se utiliza en esta plataforma son tokens digitales. Los tokens son simples strings que se envían al servidor. Existen dos tipos de tokens: bearer token y refresh tokens. El bearer token se debe presentar en cada request para poder acceder al recurso solicitado. Este token es válido por 15 minutos desde que se lo solicita. Para renovar este token, se utiliza el refresh token. Para obtener el primer par de tokens se realiza un request POST especificando el nombre de usuario y contraseña."
-			},
-			"response": []
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Refresh TOKEN",
-			"event": [
+			"name": "Charts",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "4a5b369d-b31d-4c51-a654-4b42dfe56560",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"iol_access_token\",jsonData.access_token);",
-							"postman.setGlobalVariable(\"iol_refresh_token\",jsonData.refresh_token);"
-						],
-						"type": "text/javascript"
-					}
+					"name": "Grafico Intradiario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79217&idTipo=3&idMercado=1",
+							"protocol": "https",
+							"host": [
+								"www",
+								"invertironline",
+								"com"
+							],
+							"path": [
+								"Titulo",
+								"GraficoIntradiario"
+							],
+							"query": [
+								{
+									"key": "idTitulo",
+									"value": "79217"
+								},
+								{
+									"key": "idTipo",
+									"value": "3"
+								},
+								{
+									"key": "idMercado",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cotizaciones - History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.invertironline.com/api/cotizaciones/history?symbolName=AY24&exchange=BCBA&resolution=D&from=1577706851&to=1578570851",
+							"protocol": "https",
+							"host": [
+								"www",
+								"invertironline",
+								"com"
+							],
+							"path": [
+								"api",
+								"cotizaciones",
+								"history"
+							],
+							"query": [
+								{
+									"key": "symbolName",
+									"value": "AY24"
+								},
+								{
+									"key": "exchange",
+									"value": "BCBA"
+								},
+								{
+									"key": "resolution",
+									"value": "D"
+								},
+								{
+									"key": "from",
+									"value": "1577706851",
+									"description": "timestamp"
+								},
+								{
+									"key": "to",
+									"value": "1578570851",
+									"description": "timestamp"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "refresh_token",
-							"value": "{{iol_refresh_token}}",
-							"type": "text"
-						},
-						{
-							"key": "grant_type",
-							"value": "refresh_token",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://api.invertironline.com/token",
-					"protocol": "https",
-					"host": [
-						"api",
-						"invertironline",
-						"com"
-					],
-					"path": [
-						"token"
-					]
-				}
-			},
-			"response": []
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get cotizacion",
