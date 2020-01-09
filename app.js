@@ -1,8 +1,8 @@
 const iol = require('./node-iol-v2');
 const signale  =  require('signale');
-const utils = require('./utils.js');
+const formatter = require('./formatter/formatters');
 
-signale.info(`DATE: ${ utils.formatDate('2020-01-07T03:01:16.9960595-03:00') }`);
+signale.info(`DATE: ${ formatter.formatDate('2020-01-07T03:01:16.9960595-03:00') }`);
 
 /*
 * ================================================
@@ -124,16 +124,16 @@ iol.auth().then( token => {
 
         //signale.success(values);
 
-        signale.info(`AY24: ${ utils.ars(ay24.ultimoPrecio) }`);
-        signale.info(`AY24D: ${ utils.usd(ay24d.ultimoPrecio) }`);
+        signale.info(`AY24: ${ formatter.ars(ay24.ultimoPrecio) }`);
+        signale.info(`AY24D: ${ formatter.usd(ay24d.ultimoPrecio) }`);
 
-        signale.info(`La compra de dólar bolsa cuesta: ${ utils.ars(ccl) }` );
+        signale.info(`La compra de dólar bolsa cuesta: ${ formatter.ars(ccl) }` );
         signale.info(`* ================================================ *\n` );
-        //signale.info(`Mi MEP: ${ utils.ars(myCcl) }\n` );
+        //signale.info(`Mi MEP: ${ formatter.ars(myCcl) }\n` );
 
         if(ay24.puntas.length > 0 && ay24d.puntas.length > 0) {
-            signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,utils.cTable('$', ay24.puntas));
-            signale.success(`\nCAJA DE PUNTAS AY24D\n=======================================================\n`,utils.cTable('U$D', ay24d.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,formatter.cTable('$', ay24.puntas));
+            signale.success(`\nCAJA DE PUNTAS AY24D\n=======================================================\n`,formatter.cTable('U$D', ay24d.puntas));
         }
 
     })

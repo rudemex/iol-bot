@@ -13,7 +13,7 @@ Disclaimer: I'm not responsible for any damage, of any way, when using this modu
 5) Enjoy!
 
 ## Usage
-First we create a file (can be index.js) where we require this package if we did the `npm install node-iol` thing
+First we create a file (can be _index.js) where we require this package if we did the `npm install node-iol` thing
 `const iol = require('node-iol');`
 or, if we downloaded from github, we require the file directly 
 `const iol = require('./node-iol');`

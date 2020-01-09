@@ -1,7 +1,7 @@
 const axios = require('axios');
 const querystring = require('querystring');
 
-const fsp = require ('./fs-promise');
+const fsp = require ('./utils/fs-promise');
 const credentials = require ('./auth.json');
 
 let apiPath = 'https://api.invertironline.com';
