@@ -1,8 +1,8 @@
 const iol = require('./node-iol-v2');
 const signale  =  require('signale');
-const formatter = require('./formatter/formatters');
+const formatter = require('./utils/formatters');
 
-signale.info(`DATE: ${ formatter.formatDate('2020-01-07T03:01:16.9960595-03:00') }`);
+//signale.info(`DATE: ${ formatter.formatDate('2020-01-07T03:01:16.9960595-03:00') }`);
 
 /*
 * ================================================
@@ -112,7 +112,7 @@ iol.auth().then( token => {
 * Cotizacion bono
 * ================================================
 */
-/*iol.auth().then(token => {
+iol.auth().then(token => {
     return Promise.all([
         iol.getTickerValueTest(token, 'bcba', 'ay24'),
         iol.getTickerValueTest(token, 'bcba', 'ay24d')
@@ -139,4 +139,4 @@ iol.auth().then( token => {
     })
 }).catch( e => {
     signale.error(e);
-});*/
+});

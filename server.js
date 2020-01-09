@@ -1,13 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const TelegramBot = require('node-telegram-bot-api');
 const routes = require("./routes/routes");
 const config = require('config');
 const signale  =  require('signale');
 const pjson = require('./package.json');
 const cors = require('cors');
 
-const url = 'https://api.telegram.org/bot';
-const apiToken = '{api-token-given-by-BotFather}';
+//bot settings
+const token = config.get("telegram").token;
+const bot = new TelegramBot(token, {polling: true});// Create a bot that uses 'polling' to fetch new updates
 
 
 const app = express();
@@ -68,3 +70,20 @@ const server = app.listen(port,  () => {
     signale.info("App running on port.", server.address().port);
     signale.info("Version: ",pjson.version);
 });
+
+/*
+// Matches "/echo [whatever]"
+bot.onText(/\/echo (.+)/, (msg, match) => {
+    // 'msg' is the received Message from Telegram
+    // 'match' is the result of executing the regexp above on the text content
+    // of the message
+    console.log("msg: ",msg);
+    console.log("match: ",match);
+
+    const chatId = msg.chat.id;
+    const resp = match[1]; // the captured "whatever"
+
+    // send back the matched "whatever" to the chat
+    bot.sendMessage(chatId, resp);
+});
+ */

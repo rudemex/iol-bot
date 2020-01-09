@@ -4,18 +4,23 @@
     "origins":"ORIGINS_ALLOWED",
     "originsReadOnly":"ORIGINS_READ_ONLY",
     "corsEnabled": "CORS_ENABLED",
+    "formatDate": "FORMAT_DATE",
     "tz": "TZ"
+  },
+  "telegram": {
+    "apiPath": "SERVICE_API_TELEGRAM",
+    "token": "TOKEN_TELEGRAM_BOT"
   },
   "services": {
     "api_iol":"SERVICE_API_IOL",
-    "server_time",: "SERVICE_SERVER_TIME",
+    "server_time": "SERVICE_SERVER_TIME",
     "charts": {
       "history": "SERVICE_HISTORY_CHART",
       "intradiary": {
         "AY24": "SERVICE_INTRADIARY_CHART_AY24",
         "AY24D": "SERVICE_INTRADIARY_CHART_AY24D",
         "AO20": "SERVICE_INTRADIARY_CHART_AO20",
-        "AO20D": "SERVICE_INTRADIARY_CHART_AO20D",
+        "AO20D": "SERVICE_INTRADIARY_CHART_AO20D"
       }
     }
   }

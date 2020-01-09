@@ -1,6 +1,7 @@
 SERVER_PORT=8008
 ORIGINS_ALLOWED=http://localhost:3000,http://localhost:8008
 ORIGINS_READ_ONLY=
+FORMAT_DATE=YYYY-MM-DD HH:mm:ss
 TZ=America/Argentina/Buenos_Aires
 CORS_ENABLED=true
 SERVICE_API_IOL=https://api.invertironline.com
@@ -10,3 +11,5 @@ SERVICE_INTRADIARY_CHART_AY24=https://www.invertironline.com/Titulo/GraficoIntra
 SERVICE_INTRADIARY_CHART_AY24D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=79234&idTipo=3&idMercado=1
 SERVICE_INTRADIARY_CHART_AO20=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82511&idTipo=3&idMercado=1
 SERVICE_INTRADIARY_CHART_AO20D=https://www.invertironline.com/Titulo/GraficoIntradiario?idTitulo=82512&idTipo=3&idMercado=1
+SERVICE_API_TELEGRAM=https://api.telegram.org
+TOKEN_TELEGRAM_BOT=1069898694:AAEyBMMtLB77EYn-nCg8gHx5JbyKVCSxiwQ

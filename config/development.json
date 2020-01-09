@@ -4,7 +4,12 @@
     "origins": "http://localhost:8008",
     "originsReadOnly":"http://localhost:8008",
     "corsEnabled": true,
+    "formatDate":"YYYY-MM-DD HH:mm:ss",
     "tz": "America/Argentina/Buenos_Aires"
+  },
+  "telegram": {
+    "apiPath": "https://api.telegram.org",
+    "token": "1069898694:AAEyBMMtLB77EYn-nCg8gHx5JbyKVCSxiwQ"
   },
   "services": {
     "api_iol": "https://api.invertironline.com",

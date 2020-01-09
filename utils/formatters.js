@@ -1,6 +1,9 @@
+const config = require('config');
 const currency = require('currency.js');
 const Table = require('easy-table');
 const moment = require('moment-timezone');
+
+const serverConfig = config.get('server');
 
 // Format num to ARS currency
 const ars = value => currency(value, { symbol: "$ ", precision: 2, formatWithSymbol: true, decimal: ',', separator: '.'}).format(true);
@@ -11,13 +14,13 @@ const amount = (symbol = null, value) => currency(value, { symbol: `${ (symbol) 
 // Format num
 const num = (symbol = null, value) => currency(value, { symbol: `${ (symbol) ? `${symbol} ` :'' }`, precision: 0, formatWithSymbol: true, decimal: ',', separator: '.'}).format(true);
 // Format date
-const formatDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
+const formatDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = `${serverConfig.tz}`) => moment(date).tz(timeZone).format(formatDate);
 // Format date UTC 2013-11-18T11:55Z
-const formatDateUTC = (date, formatDate = 'YYYY-MM-DDTHH:mm:ss.SSSZ', timeZone = 'America/Argentina/Buenos_Aires') => moment(date).tz(timeZone).format(formatDate);
+const formatDateUTC = (date, formatDate = 'YYYY-MM-DDTHH:mm:ss.SSSZ', timeZone = `${serverConfig.tz}`) => moment(date).tz(timeZone).format(formatDate);
 // Format timestamp(unix) to date
-const formatTimestampToDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment.unix(date).tz(timeZone).format(formatDate);
+const formatTimestampToDate = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = `${serverConfig.tz}`) => moment.unix(date).tz(timeZone).format(formatDate);
 // Format date to timestamp(unix)
-const formatDateToTimestamp = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = 'America/Argentina/Buenos_Aires') => moment(date, formatDate).tz(timeZone).unix();
+const formatDateToTimestamp = (date, formatDate = 'YYYY-MM-DD HH:mm:ss', timeZone = `${serverConfig.tz}`) => moment(date, formatDate).tz(timeZone).unix();
 
 // Get current date with formats
 const currentDay = () => {
@@ -43,6 +46,11 @@ const currentDay = () => {
             "now": `${ formatDateUTC(moment(now)) }`,
             "start": `${ formatDateUTC(moment(now).startOf('day')) }`,
             "end": `${ formatDateUTC(moment(now).endOf('day')) }`,
+        },
+        "timestamp":{
+            "now": `${ formatDateToTimestamp(moment(now)) }`,
+            "start": `${ formatDateToTimestamp(moment(now).startOf('day')) }`,
+            "end": `${ formatDateToTimestamp(moment(now).endOf('day')) }`,
         }
     };
 
