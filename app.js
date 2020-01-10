@@ -149,7 +149,7 @@ iol.auth().then(token => {
         let ay24 = values[0];
         let ay24d = values[1];
         let ccl = ay24.ultimoPrecio/ay24d.ultimoPrecio;
-        let myCcl = 3000 / ay24d.ultimoPrecio;
+        let myCcl = 3320 / ay24d.ultimoPrecio;
 
         //signale.success(values);
 
@@ -158,7 +158,7 @@ iol.auth().then(token => {
 
         signale.info(`La compra de dólar bolsa cuesta: ${ formatter.ars(ccl) }` );
         signale.info(`* ================================================ *\n` );
-        //signale.info(`Mi MEP: ${ formatter.ars(myCcl) }\n` );
+        signale.info(`Mi MEP: ${ formatter.ars(myCcl) }\n` );
 
         if(ay24.puntas.length > 0 && ay24d.puntas.length > 0) {
             signale.success(`\nCAJA DE PUNTAS AY24\n=======================================================\n`,formatter.cTable('$', ay24.puntas));
